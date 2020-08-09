@@ -10,5 +10,11 @@ npm i --production
 cp .env.example .env
 chown -R www-data:www-data tmp
 
-sed -i "s|^PORT=.*|PORT=3000|" .env
+sed -i "s|^PORT=.*|PORT=443|" .env
 sed -i "s|NODE_ENV=.*|NODE_ENV=production|" .env
+
+# Leverage install suggestion as noted:
+# https://github.com/instructure/canvas-rce-api/issues/12
+
+cp /usr/local/src/canvas-rce-api/app.js /var/www/canvas-rce-api/
+cp /usr/local/src/canvas-rce-api/application.js /var/www/canvas-rce-api/app/
